@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" lang="ko" action="">
+        <title>회원가입 페이지</title>
+    </head>
+    <body>
+        <form method="post" th:action="@{/api/user}">
+            <input type="text" name="username">
+            <input type="password" name="password">
+            <input type="submit" value="회원가입">
+        </form>
+    </body>
+</html>
