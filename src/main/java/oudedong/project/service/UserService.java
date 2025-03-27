@@ -18,7 +18,6 @@ public class UserService {
     private final UserRepo userRepo;
     private final BCryptPasswordEncoder encoder;
 
-    @PostMapping("/api/user")
     public UserResponse register(RegisterRequest request){
         
         User registered = new User();

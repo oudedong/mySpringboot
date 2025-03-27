@@ -1,5 +1,7 @@
 package oudedong.project.controller;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +29,9 @@ public class UserApiController {
         );
         UserResponse response = userService.register(request);
 
-        return ResponseEntity.ok().body(response);
+        return ResponseEntity
+            .status(HttpStatus.FOUND)
+            .header(HttpHeaders.LOCATION, "/main")
+            .body(response);
     }
 }

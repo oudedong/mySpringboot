@@ -30,7 +30,7 @@ public class ArticleService {
     @Transactional
     public ArticleResponse saveOrModifyArticle(ArticleRequest request){
         
-        Article article = articleRepo.findByUseridAndTitle(request.getUserId(), request.getTitle()).orElse(null);
+        Article article = articleRepo.findByUserIdAndTitle(request.getUserId(), request.getTitle()).orElse(null);
         String writerName = findArticleWriter(request.getUserId());
 
         if(article == null){
@@ -67,14 +67,18 @@ public class ArticleService {
 
         List<Article> found = new LinkedList<>();
 
-        if(request.getArticleId() != null){
-            found.add(articleRepo.findById(request.getArticleId()).orElseThrow(articleExep));
-        }
-        if(request.getUserId() != null){
-            found.addAll(articleRepo.findAllByUserid(request.getUserId(), PageRequest.of(page, pageSize)));
-        }
-        if(request.getTitle() != null){
-            found.addAll(articleRepo.findAllByTitle(request.getTitle(), PageRequest.of(page, pageSize)));
+        if(request != null){
+            if(request.getArticleId() != null){
+                found.add(articleRepo.findById(request.getArticleId()).orElseThrow(articleExep));
+            }
+            if(request.getUserId() != null){
+                found.addAll(articleRepo.findAllByUserId(request.getUserId(), PageRequest.of(page, pageSize)));
+            }
+            if(request.getTitle() != null){
+                found.addAll(articleRepo.findAllByTitle(request.getTitle(), PageRequest.of(page, pageSize)));
+            }
+        }else{
+            found.addAll(articleRepo.findAll(PageRequest.of(page, pageSize)).getContent());
         }
         return found.stream().map((article)->
             new ArticleResponse(article).setWriter(findArticleWriter(article.getUserId()))
