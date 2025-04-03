@@ -14,4 +14,7 @@ public class ArticleRequest {
     private String body;
     private Long userId;
 
+    public static ArticleRequest OnlyId(Long id){
+        return new ArticleRequest(id, null, null, null);
+    }
 }

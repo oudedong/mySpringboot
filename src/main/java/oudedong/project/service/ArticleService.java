@@ -72,10 +72,10 @@ public class ArticleService {
                 found.add(articleRepo.findById(request.getArticleId()).orElseThrow(articleExep));
             }
             if(request.getUserId() != null){
-                found.addAll(articleRepo.findAllByUserId(request.getUserId(), PageRequest.of(page, pageSize)));
+                found.addAll(articleRepo.findAllByUserId(request.getUserId(), PageRequest.of(page, pageSize)).toList());
             }
             if(request.getTitle() != null){
-                found.addAll(articleRepo.findAllByTitle(request.getTitle(), PageRequest.of(page, pageSize)));
+                found.addAll(articleRepo.findAllByTitle(request.getTitle(), PageRequest.of(page, pageSize)).toList());
             }
         }else{
             found.addAll(articleRepo.findAll(PageRequest.of(page, pageSize)).getContent());
@@ -95,6 +95,9 @@ public class ArticleService {
     }
 
 
+    public Long getPageCnt(){
+        return Long.valueOf(Double.valueOf(Math.ceil((double)articleRepo.count()/pageSize)).intValue());
+    }
     private String findArticleWriter(Long userid){
         User writer = userRepo.findById(userid).orElseThrow(userExep);
         return writer.getUsername();

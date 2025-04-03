@@ -2,13 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8" lang="ko" action="">
+        <link href="/css/default.css" rel="stylesheet">
+        <link href="../static/css/default.css" rel="stylesheet">
         <title>로그인 페이지</title>
     </head>
     <body>
-        <form method="post" th:action="@{/login}">
-            <input type="text" name="username">
-            <input type="password" name="password">
-            <input type="submit" value="로그인">
+        <form class="listContainer fit myStyle" method="post" th:action="@{/login}" style="width: 30vw; height: 50vw">
+            <div class="card">아이디: <input type="text" name="username"></div>
+            <div class="card">비밀번호: <input type="password" name="password"></div>
+            <div class="card"><input type="submit" value="로그인"></div>
+            <div class="card"><a th:href="@{/register}">회원가입</a></div>
         </form>
     </body>
 </html>

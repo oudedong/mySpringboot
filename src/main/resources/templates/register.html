@@ -5,9 +5,9 @@
         <title>회원가입 페이지</title>
     </head>
     <body>
-        <form method="post" th:action="@{/api/user}">
-            <input type="text" name="username">
-            <input type="password" name="password">
+        <form class="container myStyle" method="post" th:action="@{/api/user}">
+            <div class="card"><input type="text" name="username"></div>
+            <div class="card"><input type="password" name="password"></div>
             <input type="submit" value="회원가입">
         </form>
     </body>

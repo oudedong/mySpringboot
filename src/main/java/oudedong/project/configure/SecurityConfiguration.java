@@ -35,7 +35,8 @@ public class SecurityConfiguration {
         return (web) -> {
             web.ignoring().requestMatchers(
                 PathRequest.toH2Console(),
-                new AntPathRequestMatcher("/static/**")
+                new AntPathRequestMatcher("/css/**"),
+                new AntPathRequestMatcher("/js/**")
             );
         };
     }

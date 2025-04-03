@@ -11,6 +11,7 @@ import oudedong.project.service.ArticleService;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +27,7 @@ public class ArticleApiController {
     private final ArticleService articleService;
 
     @GetMapping("/articles/{page}")
-    public ResponseEntity<List<ArticleResponse>> getPage(@PathVariable int page) {
+    public ResponseEntity<List<ArticleResponse>> getPage(@PathVariable("page") int page) {
         
         List<ArticleResponse> articles =  articleService.requestArticle(null, page);
 
@@ -34,7 +35,7 @@ public class ArticleApiController {
     }
     
     @GetMapping("/article/{id}")
-    public ResponseEntity<ArticleResponse> getArticle(@PathVariable Long id){
+    public ResponseEntity<ArticleResponse> getArticle(@PathVariable("id") Long id){
 
         ArticleRequest request = ArticleRequest.builder().articleId(id).build();
         ArticleResponse article = articleService
@@ -52,4 +53,11 @@ public class ArticleApiController {
         return ResponseEntity.ok().body(response);
     }
     
+    @DeleteMapping("/article/{id}")
+    public ResponseEntity<ArticleResponse> deleteArticle(@RequestBody ArticleRequest request) {
+        
+        ArticleResponse response = articleService.deleteArticle(request);
+
+        return ResponseEntity.ok().body(response);
+    }
 }

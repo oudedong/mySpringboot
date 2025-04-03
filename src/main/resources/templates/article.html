@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" lang="ko">
+        <link href="/css/default.css" rel="stylesheet">
+        <link href="../static/css/default.css" rel="stylesheet">
+        <title>article</title>
+    </head>
+    <body>
+        <div class="listContainer myStyle" th:object="${article}">
+            <div class="card myStyle">
+                <p th:text="'제목: '+*{title}"></p>
+                <p class="username" th:text="'작성자: '+*{writer}"></p>
+            </div>
+            <div class="card myStyle">
+                <p class="date" th:text="'작성일: '+*{created}"></p> 
+                <p class="date" th:text="'/수정일: '+*{modifiedTime}"></p>
+            </div>
+            <div class="listContainer myStyle">
+                <p th:text="*{body}"></p> <!--수정필요....-->
+            </div>
+        </div>
+    </body>
+</html>
