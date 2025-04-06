@@ -7,10 +7,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import oudedong.project.domain.User;
 
 @Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class UserDetail implements UserDetails{
 
     private Long id;
@@ -19,6 +23,7 @@ public class UserDetail implements UserDetails{
     private List<SimpleGrantedAuthority> authorities;
 
     public UserDetail(User user){
+        username = user.getUsername();
         id = user.getId();
         password = user.getPassword();
         authorities = user

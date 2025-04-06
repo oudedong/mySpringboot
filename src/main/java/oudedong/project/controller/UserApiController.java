@@ -31,7 +31,7 @@ public class UserApiController {
 
         return ResponseEntity
             .status(HttpStatus.FOUND)
-            .header(HttpHeaders.LOCATION, "/main")
+            .header(HttpHeaders.LOCATION, "/login")
             .body(response);
     }
 }

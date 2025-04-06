@@ -1,15 +1,11 @@
 package oudedong.project.dto;
 
 import java.util.List;
-import java.util.Set;
-
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import oudedong.project.domain.User;
-import oudedong.project.vo.AuthorityType;
 
 @Getter
 @AllArgsConstructor

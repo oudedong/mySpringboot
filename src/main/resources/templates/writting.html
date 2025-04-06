@@ -3,10 +3,20 @@
     <head>
         <meta charset="utf-8" lang="ko">
         <link href="/css/default.css" rel="stylesheet">
-        <link href="../static/css/default.css" rel="stylesheet">
-        <title>글작성성</title>
+        <script src="/js/writting.js" defer></script> 
+        <script src="/js/backButton.js" defer></script>
+        <title th:if="${id==null}">글 작성</title>
+        <title th:if="${id!=null}">글 수정</title>
     </head>
     <body>
-        미넝ㄻ;니앙러;ㅁ닝
+        <input id="articleId" type="hidden" th:value="${id}">
+        <div class="myStyle listContainer">
+            <input class="myStyle card" type="text" name="title">
+            <textarea class="myStyle listContainer" name="body"></textarea>
+        </form>
+        <div class="card myStyle">
+            <button id="submit">제출</button>
+            <button id="back">뒤로가기</button>
+        </div>
     </body>
 </html>

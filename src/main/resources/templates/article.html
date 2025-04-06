@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8" lang="ko">
         <link href="/css/default.css" rel="stylesheet">
-        <link href="../static/css/default.css" rel="stylesheet">
+        <script src="/js/article.js" defer></script>
+        <script src="/js/backButton.js" defer></script>
         <title>article</title>
     </head>
     <body>
@@ -17,7 +18,12 @@
                 <p class="date" th:text="'/수정일: '+*{modifiedTime}"></p>
             </div>
             <div class="listContainer myStyle">
-                <p th:text="*{body}"></p> <!--수정필요....-->
+                <p class="articleText" th:text="*{body}"></p>
+            </div>
+            <div class="card myStyle">
+                <button id="back">뒤로가기</button>
+                <button id="delete" th:if="${isOwner}">삭제</button>
+                <a th:href="@{/main/article/writting(id=*{articleId})}" th:if="${isOwner}">수정</button>
             </div>
         </div>
     </body>

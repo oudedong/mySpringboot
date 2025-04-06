@@ -11,9 +11,12 @@ body {
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
+    align-items: center;
     flex-grow: 1;
-    width: 95%;
+    width: 98%;
     height: 98%;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
 }
 .listContainer p {
     margin: 0.2rem 0.5rem;
@@ -22,8 +25,11 @@ body {
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-start;
+    flex-shrink: 1;
     align-items: baseline;
-    margin: 0.2rem 0.5rem;
+    width: 98%;  /*없으면 상위flex컨테이너에서 align center로 정렬되면 크기가 조정되버림!!*/
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
 }
 
 .myStyle{
@@ -50,6 +56,10 @@ body {
 .articles :nth-child(3){
     grid-column: 2 / 6;
     grid-row: 2 / 3;
+}
+.articleText{
+    align-self: flex-start;
+    justify-self: flex-start;
 }
 
 .fit{

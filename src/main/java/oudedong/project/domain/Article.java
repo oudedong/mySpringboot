@@ -40,4 +40,11 @@ public class Article {
 
     @Column(name="lastModified", nullable = true)
     private LocalDateTime lastModified;
+
+    public Article(String title, Long userId, LocalDateTime created, LocalDateTime lastModified){
+        this.title = title;
+        this.userId = userId;
+        this.created = created;
+        this.lastModified = lastModified;
+    }
 }

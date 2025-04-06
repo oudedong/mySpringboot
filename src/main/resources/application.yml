@@ -16,8 +16,9 @@ spring:
       hibernate:
         format_sql: true
     defer-datasource-initialization: true
-        
-
+logging:
+  level:
+    org.springframework.security: DEBUG
 admin:
   name: test
   password: test123

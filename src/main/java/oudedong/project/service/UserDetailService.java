@@ -24,6 +24,11 @@ public class UserDetailService implements UserDetailsService{
 
         User user = userRepo.findByUsername(username).orElseThrow(()-> new UsernameNotFoundException("cant find user: " + username));
 
+        System.out.println("===========================================================");
+        System.out.println("loadUserByUsername 호출됨: " + username);
+        System.out.println("비밀번호: " + user.getPassword());
+        System.out.println("권한: " + user.getAuthorities());
+
         return new UserDetail(user);
     }
     

@@ -3,14 +3,14 @@
     <head>
         <meta charset="utf-8" lang="ko">
         <link href="/css/default.css" rel="stylesheet">
-        <link href="../static/css/default.css" rel="stylesheet">
         <title>articles</title>
     </head>
     <body>
         <div class="articles myStyle">
             <div class="listContainer myStyle">
+                <p th:text="${currentUser ?: '로그인 필요'}"></p>
                 <a th:href="@{/main}">메인으로</a>
-                <a th:href="@{/main/article/writting}">글쓰기</a>
+                <a th:if="${currentUser != ''}" th:href="@{/main/article/writting}">글쓰기</a>
             </div>
             <div class="listContainer myStyle">
                 <div class="listContainer myStyle fit" th:each="article : ${articles}">
